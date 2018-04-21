@@ -126,3 +126,19 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.rank img{
+  width: 100%;
+  height: 90%;
+}
+
+.rank {
+  width: 100%;
+  height: 35%;
+}
+
+.col-3 p{
+  
+  vertical-align: middle;
+ 
+}
