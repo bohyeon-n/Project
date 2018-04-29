@@ -1,0 +1,1 @@
+document.getElementById('result').src = localStorage.getItem('result');

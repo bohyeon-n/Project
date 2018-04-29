@@ -3,6 +3,7 @@
 // 만약 p1을 클릭하면 p1을 배열에 저장한다. 
 // 만약 p2를 클릭하면 p2를 배열에 저장한다. 
 // 다음 두 개의 사진을 보여준다. 
+
 const arr = ['/img/p0.jpeg','/img/p1.jpeg','/img/p2.jpeg','/img/p3.jpeg','/img/p4.jpeg','/img/p5.jpeg',
 '/img/p6.jpeg','/img/p7.jpeg']
 let index = arr.length-1
@@ -22,6 +23,7 @@ let i = 0;
     document.getElementById('p2').src = arr[i+1];
   }
   if(arr.length === 1){
+    localStorage.setItem('result', arr[0])
     window.location.href = '/result.html'
   }
 }) 
@@ -36,9 +38,11 @@ let i = 0;
     document.getElementById('p2').src = arr[i+1];
   }
   if(arr.length === 1){
+    localStorage.setItem('result', arr[0])
     window.location.href = '/result.html'
   }
 })
+
 
 
 
