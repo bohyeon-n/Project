@@ -56,6 +56,7 @@ const roundEl = document.querySelector(".round");
 let round = arr.length / 2;
 let current = 1;
 let i = 0;
+//처음 라운드 표시
 roundEl.textContent = `${current} / ${round}`;
 document.getElementById("p1").src = arr[0];
 document.getElementById("p2").src = arr[1];
@@ -65,56 +66,44 @@ document.getElementById("p2").src = arr[1];
 p1El.addEventListener("click", () => {
   selectedArr.push(arr[i]);
   i += 2;
-  document.getElementById("p1").src = arr[i];
-  document.getElementById("p2").src = arr[i+1];
   current++;
-  roundEl.textContent = `${current} / ${round}`;
   // 끝 두 개의 사진만 남았을 때 클릭한다면 클릭된 사진을 저장하고 라운드를 바꿔줘야 한다.
   if (i === arr.length) {
-    // selectedArr.push(arr[i]);
     [arr, selectedArr] = swap(arr, selectedArr);
     selectedArr = [];
     i = 0;
     current = 1;
     round = round / 2;
-    if(arr.length !== 1){
-      roundEl.textContent = `${current} / ${round}`;
-    }
-    document.getElementById("p1").src = arr[i];
-    document.getElementById("p2").src = arr[i + 1];
   }
-  // 최종선택 
   if (arr.length === 1) {
     localStorage.setItem("result", arr);
     window.location.href = "/result.html";
-  }
- 
-});
-//두 번째 사진이 선택됐을 때
-p2El.addEventListener("click", () => {
-  selectedArr.push(arr[i+1]);
-  i += 2;
-  document.getElementById("p1").src = arr[i];
-  document.getElementById("p2").src = arr[i+1];
-  current++;
-
-
-  // 끝 두 개의 사진만 남았을 때 클릭한다면 클릭된 사진을 저장하고 라운드를 바꿔줘야 한다.
-  if (i === arr.length) {
-    // selectedArr.push(arr[i]);
-    [arr, selectedArr] = swap(arr, selectedArr);
-    selectedArr = [];
-    i = 0;
-    current = 1;
-    round = round / 2;
+  } else {
     roundEl.textContent = `${current} / ${round}`;
     document.getElementById("p1").src = arr[i];
     document.getElementById("p2").src = arr[i + 1];
   }
-  // 최종선택 
+});
+
+//두 번째 사진이 선택됐을 때
+p2El.addEventListener("click", () => {
+  selectedArr.push(arr[i + 1]);
+  i += 2;
+  current++;
+  // 끝 두 개의 사진만 남았을 때 클릭한다면 클릭된 사진을 저장하고 라운드를 바꿔줘야 한다.
+  if (i === arr.length) {
+    [arr, selectedArr] = swap(arr, selectedArr);
+    selectedArr = [];
+    i = 0;
+    current = 1;
+    round = round / 2;
+  }
   if (arr.length === 1) {
     localStorage.setItem("result", arr);
     window.location.href = "/result.html";
+  } else {
+    roundEl.textContent = `${current} / ${round}`;
+    document.getElementById("p1").src = arr[i];
+    document.getElementById("p2").src = arr[i + 1];
   }
-  roundEl.textContent = `${current} / ${round}`;
 });
